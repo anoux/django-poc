@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<h1>About the site</h1>
+
+	<h3>{{ title|capfirst }}</h3><!-- Applying first filter CAPFIRST-->
+
+	{{ my_html|safe }} <!-- striptags filter get rid of the h1, meanwhile safe tag randerize the h1 tag -->
+
+	<p> 
+		{{ my_text }}
+	</p>
+
+	<p>
+		{{ my_number }}
+	</p>
+
+	<ul>
+		<li>Item 1</li>
+		<li>Item 2</li>
+	</ul>
+
+	<ul>
+	{% for my_sub_item in my_list %}
+	<li>{{ my_sub_item }}</li>
+	{% endfor %}
+	</ul>
+{% endblock %}
+
+<!-- There are lots of built-in template tags (like block, for loops, if loops) and filters -> see Django doc-->

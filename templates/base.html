@@ -1,0 +1,17 @@
+<!-- I want all my pages (all my views) have this base structure -->
+
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title>My first Django project</title>
+		</head>
+
+		<body>
+			{% include 'navbar.html' %}
+
+		 {% block content %}
+		 replace me
+		 {% endblock %}	
+		</body>
+	</html>
+
