@@ -1,12 +1,28 @@
 from django.shortcuts import render
 
+from .forms import ProductForm
+
 from .models import Product
 # Create your views here.
-def product_detail_view(request): # don't repear names 
-	obj = Product.objects.get(id=1)
-	context = {
-		'title': obj.title,
-		'description': obj.description		
-	}
 
-	return render(request, "product/detail.html", {})
+def product_create_view(request): 
+	form = ProductForm(request.POST or None)
+	if form.is_valid():
+		form.save()
+		form = ProductForm()
+
+	context = {
+		'form': form
+	}
+	return render(request, "products/product_create.html", context)
+
+def product_detail_view(request): # don't repeat names 
+	obj = Product.objects.get(id=1)
+	# context = {
+	#	'title': obj.title,
+	#	'description': obj.description		
+	#}
+	context = {
+		'object': obj
+	}
+	return render(request, "products/product_detail.html", context)

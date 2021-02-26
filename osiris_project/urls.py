@@ -19,12 +19,15 @@ from django.urls import path
 from pages.views import home_view, contact_view, about_view	# If I type "from pages.views import home_view"
 						 			 			# it is clear I am refering to a specific view, 
 						 			 			# and that it belongs to pages (not products)
-from products.views import product_detail_view
+from products.views import product_detail_view, product_create_view
 urlpatterns = [
     path('', home_view, name='home'), # the empty string can be fulled with "contact/" for example
-    path('contact/', contact_view),
     path('about/', about_view),
-    path('admin/', admin.site.urls),
+    path('contact/', contact_view),
+    path('create/', product_create_view),
     path('product/', product_detail_view),
-    path('home/', home_view),
+    path('admin/', admin.site.urls),
 ]
+
+#path('create/', product_create_view),
+#path('home/', home_view),
