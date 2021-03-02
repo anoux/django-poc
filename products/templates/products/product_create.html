@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form method='POST'> {% csrf_token %}
-{{ form.as_p }}	
-<input type="submit" value="Save" />
+<form action='.' method='POST'>{% csrf_token %}
+ <!-- GET is defaul method, it is used to GET info. Meanwhile, you use POST when you want to save information on the backend. Action is used to specify a URL (te redirecciona a otra pág). If you use POST method gives an error because POST is not apropiated to -->
+	{{ form.as_p }} 
+	<!--This is a way to rander it out, looks pretty but does not save data (go to views.py)-->
+	<input type="submit" value="Save" />
 </form>
 {% endblock %}
